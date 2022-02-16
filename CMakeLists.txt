@@ -15,7 +15,10 @@ add_subdirectory(include/glfw)
 # Add header files for GLAD
 set(GLAD_HEADERS include/glad/glad.h include/KHR/khrplatform.h)
 
-add_executable(VoxelProject src/main.cpp ${GLAD_HEADERS})
+add_executable(VoxelProject
+        ${GLAD_HEADERS}
+        include/glad/glad.c
+        src/main.cpp)
 
 # Set include directory
 target_include_directories(VoxelProject PRIVATE include)
