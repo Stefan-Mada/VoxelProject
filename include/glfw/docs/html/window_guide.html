@@ -431,10 +431,10 @@ Window size</h2>
 Framebuffer size</h2>
 <p >While the size of a window is measured in screen coordinates, OpenGL works with pixels. The size you pass into <code>glViewport</code>, for example, should be in pixels. On some machines screen coordinates and pixels are the same, but on others they will not be. There is a second set of functions to retrieve the size, in pixels, of the framebuffer of a window.</p>
 <p >If you wish to be notified when the framebuffer of a window is resized, whether by the user or the system, set a size callback.</p>
-<div class="fragment"><div class="line"><a class="code hl_function" href="group__window.html#gab3fb7c3366577daef18c0023e2a8591f">glfwSetFramebufferSizeCallback</a>(window, framebuffer_size_callback);</div>
+<div class="fragment"><div class="line"><a class="code hl_function" href="group__window.html#gab3fb7c3366577daef18c0023e2a8591f">glfwSetFramebufferSizeCallback</a>(window, framebufferSizeCallback);</div>
 <div class="ttc" id="agroup__window_html_gab3fb7c3366577daef18c0023e2a8591f"><div class="ttname"><a href="group__window.html#gab3fb7c3366577daef18c0023e2a8591f">glfwSetFramebufferSizeCallback</a></div><div class="ttdeci">GLFWframebuffersizefun glfwSetFramebufferSizeCallback(GLFWwindow *window, GLFWframebuffersizefun callback)</div><div class="ttdoc">Sets the framebuffer resize callback for the specified window.</div></div>
 </div><!-- fragment --><p >The callback function receives the new size of the framebuffer when it is resized, which can for example be used to update the OpenGL viewport.</p>
-<div class="fragment"><div class="line"><span class="keywordtype">void</span> framebuffer_size_callback(<a class="code hl_typedef" href="group__window.html#ga3c96d80d363e67d13a41b5d1821f3242">GLFWwindow</a>* window, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height)</div>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> framebufferSizeCallback(<a class="code hl_typedef" href="group__window.html#ga3c96d80d363e67d13a41b5d1821f3242">GLFWwindow</a>* window, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height)</div>
 <div class="line">{</div>
 <div class="line">    glViewport(0, 0, width, height);</div>
 <div class="line">}</div>
