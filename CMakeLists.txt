@@ -16,9 +16,13 @@ add_subdirectory(include/glfw)
 # Add header files for GLAD
 set(GLAD_HEADERS include/glad/glad.h include/KHR/khrplatform.h)
 
+# Headers used by the project itself
+set(VOXELPROJECT_HEADERS src/Shader.hpp)
+
 add_executable(VoxelProject
         ${GLAD_HEADERS}
         include/glad/glad.c
+        ${VOXELPROJECT_HEADERS}
         src/main.cpp)
 
 # Set include directory
@@ -26,4 +30,10 @@ target_include_directories(VoxelProject PRIVATE include)
 
 # Link my project against GLFW
 target_link_libraries(VoxelProject glfw)
+
+# Command to copy shader files to build directory
+add_custom_command(TARGET VoxelProject POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/src/shaders/ $<TARGET_FILE_DIR:VoxelProject>/shaders)
+
 
