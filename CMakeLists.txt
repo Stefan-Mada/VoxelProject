@@ -34,6 +34,7 @@ target_link_libraries(VoxelProject glfw)
 # Command to copy shader files to build directory
 add_custom_command(TARGET VoxelProject POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/src/shaders/ $<TARGET_FILE_DIR:VoxelProject>/shaders)
+        ${CMAKE_SOURCE_DIR}/src/shaders/ $<TARGET_FILE_DIR:VoxelProject>/shaders
+        DEPENDS ${CMAKE_SOURCE_DIR}}/src/shaders/*)
 
 
