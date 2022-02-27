@@ -2,15 +2,15 @@
 // Created by Stefan on 2/21/2022.
 // The class wraps shader functionality in an easy to use object
 //
+#ifndef VOXELPROJECT_SHADER_HPP
+#define VOXELPROJECT_SHADER_HPP
+
 #include <glad/glad.h> // include glad to get all the required OpenGL headers
 
 #include <string>
 #include <fstream>
 #include <sstream>
 #include <iostream>
-
-#ifndef VOXELPROJECT_SHADER_HPP
-#define VOXELPROJECT_SHADER_HPP
 
 class Shader
 {
