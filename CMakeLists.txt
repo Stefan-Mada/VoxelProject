@@ -14,16 +14,18 @@ set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 add_subdirectory(include/glfw)
 
 # Add header files for GLAD
-set(GLAD_HEADERS include/glad/glad.h include/KHR/khrplatform.h)
+set(GLAD_HEADERS include/glad/glad.h include/KHR/khrplatform.h include/glad/glad.c)
+
+# Add headers for stb_image, for reading texture information
+set(STB_IMAGE_HEADERS include/stb_image/stb_image.h include/stb_image/stb_image.cpp)
 
 # Headers used by the project itself
-set(VOXELPROJECT_HEADERS src/Shader.hpp)
+set(VOXELPROJECT_HEADERS src/Shader.hpp src/main.cpp)
 
 add_executable(VoxelProject
         ${GLAD_HEADERS}
-        include/glad/glad.c
-        ${VOXELPROJECT_HEADERS}
-        src/main.cpp)
+        ${STB_IMAGE_HEADERS}
+        ${VOXELPROJECT_HEADERS})
 
 # Set include directory
 target_include_directories(VoxelProject PRIVATE include)
