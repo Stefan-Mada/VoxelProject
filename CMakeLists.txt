@@ -11,16 +11,23 @@ set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 
 # Add GLFW to source tree
+# Lightweight utility library, create a window
 add_subdirectory(include/glfw)
 
 # Add header files for GLAD
+# GLAD is used for context, window management, and user input
 set(GLAD_HEADERS include/glad/glad.h include/KHR/khrplatform.h include/glad/glad.c)
 
-# Add headers for stb_image, for reading texture information
+# Add headers for stb_image
+# Used for reading texture information
 set(STB_IMAGE_HEADERS include/stb_image/stb_image.h include/stb_image/stb_image.cpp)
 
 # Headers used by the project itself
 set(VOXELPROJECT_HEADERS src/Shader.hpp src/main.cpp)
+
+# Add glm to source tree
+# Mathematical library for matrix operations
+add_subdirectory(include/glm)
 
 add_executable(VoxelProject
         ${GLAD_HEADERS}
