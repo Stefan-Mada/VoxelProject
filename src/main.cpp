@@ -228,9 +228,9 @@ int main() {
     }
     stbi_image_free(data);
 
-    ourShader.use();
-    ourShader.setInt("texture1", 0);
-    ourShader.setInt("texture2", 1);
+    ourShader.Use();
+    ourShader.SetInt("texture1", 0);
+    ourShader.SetInt("texture2", 1);
 
 
     // uncomment this call to draw in wireframe polygons.
@@ -263,16 +263,16 @@ int main() {
         glBindTexture(GL_TEXTURE_2D, texture1);
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, texture2);
-        ourShader.use();
+        ourShader.Use();
 
 
         // pass projection matrix to shader (note that in this case it could change every frame)
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        ourShader.setMat4("projection", projection);
+        ourShader.SetMatrix4("projection", projection);
 
         // camera/view transformation
         glm::mat4 view = camera.GetViewMatrix();
-        ourShader.setMat4("view", view);
+        ourShader.SetMatrix4("view", view);
 
         glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
         for(unsigned int i = 0; i < 10; i++)
@@ -281,7 +281,7 @@ int main() {
             model = glm::translate(model, cubePositions[i]);
             float angle = 20.0f * i;
             model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
-            ourShader.setMat4("model", model);
+            ourShader.SetMatrix4("model", model);
 
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
