@@ -23,7 +23,7 @@ set(GLAD_HEADERS include/glad/glad.h include/KHR/khrplatform.h include/glad/glad
 set(STB_IMAGE_HEADERS include/stb_image/stb_image.h include/stb_image/stb_image.cpp)
 
 # Headers used by the project itself
-set(VOXELPROJECT_HEADERS src/Shader.hpp src/main.cpp src/Camera.hpp src/Game.hpp src/Game.cpp src/Shader.cpp)
+set(VOXELPROJECT_HEADERS src/Shader.hpp src/main.cpp src/Camera.hpp src/Game.hpp src/Game.cpp src/Shader.cpp src/ResourceManager.hpp src/Texture.hpp src/Texture.cpp src/ResourceManager.cpp)
 
 # Add glm to source tree
 # Mathematical library for matrix operations
