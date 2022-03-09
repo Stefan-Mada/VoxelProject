@@ -5,10 +5,10 @@
 #ifndef VOXELPROJECT_SHADER_HPP
 #define VOXELPROJECT_SHADER_HPP
 
-#include <glad/glad.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#include <GLFW/glfw3.h>
+#include "glad/glad.h"
+#include "glm/glm.hpp"
+#include "glm/gtc/type_ptr.hpp"
+#include "glfw/include/GLFW/glfw3.h"
 #include <string>
 
 class Shader

@@ -22,13 +22,28 @@ set(GLAD_HEADERS include/glad/glad.h include/KHR/khrplatform.h include/glad/glad
 # Used for reading texture information
 set(STB_IMAGE_HEADERS include/stb_image/stb_image.h include/stb_image/stb_image.cpp)
 
-# Headers used by the project itself
-set(VOXELPROJECT_HEADERS src/Shader.hpp src/main.cpp src/Camera.hpp src/Game.hpp src/Game.cpp src/Shader.cpp src/ResourceManager.hpp src/Texture.hpp src/Texture.cpp src/ResourceManager.cpp)
-
 # Add glm to source tree
 # Mathematical library for matrix operations
 add_subdirectory(include/glm)
 
+# Files that manage resources for the Voxel Project
+set (   RESOURCE_HEADERS
+        src/resources/Shader.hpp
+        src/resources/Shader.cpp
+        src/resources/ResourceManager.hpp
+        src/resources/Texture.hpp
+        src/resources/Texture.cpp
+        src/resources/ResourceManager.cpp )
+
+# Headers used by the project itself
+set(    VOXELPROJECT_HEADERS
+        ${RESOURCE_HEADERS}
+        src/main.cpp
+        src/Camera.hpp
+        src/Game.hpp
+        src/Game.cpp )
+
+# Creates executable from all necessary files
 add_executable(VoxelProject
         ${GLAD_HEADERS}
         ${STB_IMAGE_HEADERS}
@@ -43,11 +58,11 @@ target_link_libraries(VoxelProject glfw)
 # Command to copy shader files to build directory
 add_custom_command(TARGET VoxelProject POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/src/shaders/ $<TARGET_FILE_DIR:VoxelProject>/shaders
-        DEPENDS ${CMAKE_SOURCE_DIR}}/src/shaders/*)
+        ${CMAKE_SOURCE_DIR}/resources/shaders/ $<TARGET_FILE_DIR:VoxelProject>/shaders
+        DEPENDS ${CMAKE_SOURCE_DIR}}/resources/shaders/*)
 
 # Command to copy texture files to build directory
 add_custom_command(TARGET VoxelProject POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/src/textures/ $<TARGET_FILE_DIR:VoxelProject>/textures
-        DEPENDS ${CMAKE_SOURCE_DIR}}/src/textures/*)
+        ${CMAKE_SOURCE_DIR}/resources/textures/ $<TARGET_FILE_DIR:VoxelProject>/textures
+        DEPENDS ${CMAKE_SOURCE_DIR}}/resources/textures/*)

@@ -5,9 +5,10 @@
 
 #include <iostream>
 
-#include "Shader.hpp"
+#include "resources/Shader.hpp"
 #include "Camera.hpp"
-#include "ResourceManager.hpp"
+#include "resources/ResourceManager.hpp"
+#include "Game.hpp"
 
 void framebufferSizeCallback(GLFWwindow* window, int width, int height);
 void mouseCallback(GLFWwindow* window, double xpos, double ypos);
@@ -24,9 +25,7 @@ float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
 
-// timing
-float deltaTime = 0.0f;	// time between current frame and last frame
-float lastFrame = 0.0f;
+Game VoxelGame(SCR_WIDTH, SCR_HEIGHT);
 
 int main() {
     // glfw: initialize and configure
@@ -186,8 +185,13 @@ int main() {
     // uncomment this call to draw in wireframe polygons.
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
+    // initialize game
+    // ---------------
+    VoxelGame.Init();
 
-
+    // timing
+    float deltaTime = 0.0f;	// time between current frame and last frame
+    float lastFrame = 0.0f;
 
     // render loop
     // -----------
